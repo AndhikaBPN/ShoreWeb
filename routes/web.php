@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +20,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'processLogin']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/pesan', [PesananController::class, 'showPesananForm'])->name('pesan');
+Route::post('/pesan-add', [PesananController::class, 'store'])->name('pesan-store');
+Route::get('/pesan-hasil', [PesananController::class, 'hasil'])->name('pesan-hasil');
+Route::post('/pesan-download', [PesananController::class, 'download'])->name('pesan-download');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin')->middleware('auth');

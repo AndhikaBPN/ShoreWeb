@@ -26,48 +26,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- Add this in the <head> section of your HTML file -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-
-    <style type="text/css">
-        /* Add custom styles for the product card */
-        .product-card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-card .product-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .product-card .product-info {
-            margin-top: 15px;
-        }
-
-        .product-card .product-info h5 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .product-card .product-info h5 a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .product-card .product-info h5 a:hover {
-            color: #ff6600;
-        }
-
-        .product-card .product-info p {
-            color: #666;
-        }
-
-    </style>
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -96,8 +54,8 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav> 
                                 <ul id="navigation">                           
-                                    <li class="active"><a href="/">Home</a></li>
-                                    <li><a href="/pesan">Pesan</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <li class="active"><a href="/pesan">Pesan</a></li>
                                     <li><a href="/about">About</a></li>
                                 </ul>
                             </nav>
@@ -116,113 +74,68 @@
         <!-- Header End -->
     </header>
     <main>
-        <!--? slider Area Start-->
-        <section class="slider-area hero-overly">
-            <div class="slider-active">
-                <!-- Single Slider -->
-                <div class="single-slider slider-height d-flex align-items-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-7 col-lg-9 col-md-10 col-sm-9">
-                                <div class="hero__caption">
-                                    <h1 data-animation="fadeInLeft" data-delay="0.2s">SHORE - SHOP & SHOES CARE.</h1>
-                                    <p data-animation="fadeInLeft" data-delay="0.4s">Shore is the space for anything you need about shoes. (Purchase and Maintenance)</p>
-                                    <a href="#" class="btn hero-btn" data-animation="fadeInLeft" data-delay="0.7s">Explore Services</a>
+        <section class="contact-section" style="margin-top: -70px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="contact-title text-center">Pesan</h2>
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8">
+                        <form class="form-contact contact_form" action="{{ route('pesan-store') }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Nama</p>
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="nama" id="nama" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name" required>
+                                    </div>
+                                </div>
+                                <div class="col-12" style="margin-bottom: 30px;">
+                                    <p>Treatment</p>
+                                    <div class="form-group">
+                                        <select class="form-control" name="treatment" id="treatment" required>
+                                            <option value="" disabled selected style="width: 300px">Select your treatment</option>
+                                            <option value="regular" style="width: 300px">Regular</option>
+                                            <option value="express" style="width: 300px">Express</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <p>Total Shoes</p>
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="jumlahsepatu" id="jumlahsepatu" type="number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your total shoes'" placeholder="Enter your total shoes" required>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>          
-                </div>
-            </div>
-        </section>
-        <!-- slider Area End-->
-        <!--? Services Area Start -->
-        <section class="services-area pt-top border-bottom pb-20 mb-60">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <!-- <span class="element">Our Process</span> -->
-                            <h2>OUR PRODUCT</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product-card text-center">
-                            <div class="product-image">
-                                <img src="{{ asset('assets/img/product/Pegasuswhite.jpeg') }}" style="width: 200px;" alt="Pegasus White - paint">
+                            <div class="form-group mt-3 text-center">
+                                <button type="submit" class="button button-contactForm boxed-btn">Add Pesanan</button>
                             </div>
-                            <div class="product-info">
-                                <h5><a href="#">Pegasus White - paint</a></h5>
-                                <p>24K</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product-card text-center">
-                            <div class="product-image">
-                                <img src="{{ asset('assets/img/product/fabricsand.jpeg') }}" style="width: 200px;" alt="Fabric Sand - paint">
-                            </div>
-                            <div class="product-info">
-                                <h5><a href="#">Fabric Sand - paint</a></h5>
-                                <p>24K</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product-card text-center">
-                            <div class="product-image">
-                                <img src="{{ asset('assets/img/product/chocolate.jpeg') }}" style="width: 200px;" alt="Chocolate - Deodorizer">
-                            </div>
-                            <div class="product-info">
-                                <h5><a href="#">Chocolate - Deodorizer</a></h5>
-                                <p>32K</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="product-card text-center">
-                            <div class="product-image">
-                                <img src="{{ asset('assets/img/product/Blackberry.jpeg') }}" style="width: 200px;" alt="Deodorizer - Blackberry">
-                            </div>
-                            <div class="product-info">
-                                <h5><a href="#">Deodorizer - Blackberry</a></h5>
-                                <p>32K</p>
-                            </div>
-                        </div>
+                        </form>
+                        @if(session('error'))
+                            <script>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    html: '{!! addslashes(session('error')) !!}',
+                                });
+                            </script>
+                        @endif
+                        @if(session('success'))
+                            <script>
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: '{{ session('success') }}',
+                                });
+                            </script>
+                        @endif
                     </div>
                 </div>
             </div>
         </section>
-
-        <!--? About Area  -->
-        <section class="about-area2 pb-bottom mt-30">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <!-- about-img -->
-                        <div class="about-img ">
-                            <img src="{{ asset('assets/img/abt.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="about-caption mb-50">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-25">
-                                <h2>About Us</h2>
-                            </div>
-                            <p class="mb-20">
-                                Shore adalah layanan cuci sepatu berbasis web online yang menyediakan berbagai layanan seperti deep clean, fast clean, unyellowing repair dan repaint.
-                            </p>
-                            <!-- <p class="mb-30">Read More</p> -->
-
-                            <a href="#" class="btn">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Contact Area End -->
     </main>
     <footer>
         <!-- Footer Start-->
