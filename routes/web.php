@@ -18,14 +18,18 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::get('/home', function () {
+    return view('welcome');
+});
+
+// Route::get('/home', [LoginController::class, 'showLoginForm']);
 Route::post('/login', [LoginController::class, 'processLogin'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

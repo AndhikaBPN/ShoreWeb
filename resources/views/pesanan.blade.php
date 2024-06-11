@@ -63,7 +63,7 @@
                     </div>
                 </div> 
                 <div class="header-right d-none d-lg-block">
-                    <a href="/login" class="header-btn2">Login Admin</a>
+                    <a href="/" class="header-btn2">Login Admin</a>
                 </div>
                 <!-- Mobile Menu -->
                 <div class="col-12">
