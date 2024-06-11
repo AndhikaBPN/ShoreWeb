@@ -103,7 +103,7 @@
                                 <button type="submit" class="button button-contactForm boxed-btn">Login</button>
                             </div>
                         </form>
-                        @if(session('error'))
+                        @if(session('alert'))
                             <script>
                                 Swal.fire({
                                     icon: 'error',

@@ -21,4 +21,6 @@ class User extends Authenticatable
         'username',
         'password',
     ];
+
+    public $timestamps = false;
 }

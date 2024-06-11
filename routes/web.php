@@ -25,8 +25,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'processLogin']);
+Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::post('/login', [LoginController::class, 'processLogin'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/pesan', [PesananController::class, 'showPesananForm'])->name('pesan');

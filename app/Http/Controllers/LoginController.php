@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Pesanan;
 
@@ -35,8 +36,24 @@ class LoginController extends Controller
             return view('admin', compact('pesananData'));
         } else {
             // Authentication failed
-            return redirect()->back()->with('error', 'Invalid credentials');
+            return redirect()->back()->with('alert', 'Invalid credentials');
         }
+    }
+
+    public function register(Request $req){
+        $req->validate([
+            'nama' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'password' => 'required|string|min:4',
+        ]);
+
+        $user = new User;
+        $user->nama = $req->nama;
+        $user->username = $req->username;
+        $user->password = Hash::make($req->password);
+        $user->save();
+
+        return response()->json(["status"=>["success"]], 200);
     }
 
     // Logout the user
